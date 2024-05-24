@@ -103,7 +103,7 @@ class LanguageController extends Controller
             'image' => $path,
         ]);
 
-        Log::info('Store laguage : ', $language->all());
+
 
 
         return redirect()->route('languages.index')->with('success', 'Language updated successfully.');
