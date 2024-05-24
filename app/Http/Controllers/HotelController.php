@@ -58,4 +58,56 @@ class HotelController extends Controller
 
         return redirect()->route('hotels.index')->with('success', 'Hotel created successfully.');
     }
+
+    /**
+     * Show the form for editing the specified hotel.
+     *
+     * @param  \App\Models\Hotel  $hotel
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Hotel $hotel)
+    {
+        return view('hotels.edit', compact('hotel'));
+    }
+
+    /**
+     * Update the specified hotel in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Hotel  $hotel
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Hotel $hotel)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:hotels,email,' . $hotel->id,
+            'pseudo' => 'required|string|max:255|unique:hotels,pseudo,' . $hotel->id,
+        ]);
+
+        $hotel->update([
+            'title' => $request->title,
+            'logo' => $request->logo,
+            'address' => $request->address,
+            'email' => $request->email,
+            'telephone' => $request->telephone,
+            'website' => $request->website,
+            'pseudo' => $request->pseudo,
+            'password' => $request->password ? bcrypt($request->password) : $hotel->password,
+        ]);
+
+        return redirect()->route('hotels.index')->with('success', 'Hotel updated successfully.');
+    }
+
+    /**
+     * Remove the specified hotel from storage.
+     *
+     * @param  \App\Models\Hotel  $hotel
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Hotel $hotel)
+    {
+        $hotel->delete();
+        return redirect()->route('hotels.index')->with('success', 'Hotel deleted successfully.');
+    }
 }
