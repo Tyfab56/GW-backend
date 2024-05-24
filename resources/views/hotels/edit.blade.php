@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Edit Hotel</h1>
-    <form method="POST" action="{{ route('hotels.update', $hotel) }}">
+    <form method="POST" action="{{ route('hotels.update', $hotel) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -12,7 +12,10 @@
         </div>
         <div class="form-group">
             <label for="logo">Logo</label>
-            <input type="text" class="form-control" id="logo" name="logo" value="{{ $hotel->logo }}">
+            <input type="file" class="form-control" id="logo" name="logo">
+            @if($hotel->logo)
+            <img src="{{ asset('storage/' . $hotel->logo) }}" alt="Current Logo" width="100">
+            @endif
         </div>
         <div class="form-group">
             <label for="address">Address</label>

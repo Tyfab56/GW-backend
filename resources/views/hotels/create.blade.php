@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Create Hotel</h1>
-    <form method="POST" action="{{ route('hotels.store') }}">
+    <form method="POST" action="{{ route('hotels.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="title">Title</label>
@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label for="logo">Logo</label>
-            <input type="text" class="form-control" id="logo" name="logo">
+            <input type="file" class="form-control" id="logo" name="logo">
         </div>
         <div class="form-group">
             <label for="address">Address</label>

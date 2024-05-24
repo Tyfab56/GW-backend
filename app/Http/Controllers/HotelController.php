@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HotelController extends Controller
 {
@@ -41,11 +42,14 @@ class HotelController extends Controller
             'email' => 'required|string|email|max:255|unique:hotels',
             'pseudo' => 'required|string|max:255|unique:hotels',
             'password' => 'required|string|min:8|confirmed',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $path = $request->file('logo') ? $request->file('logo')->store('logos', 'public') : null;
 
         $hotel = new Hotel([
             'title' => $request->title,
-            'logo' => $request->logo,
+            'logo' => $path,
             'address' => $request->address,
             'email' => $request->email,
             'telephone' => $request->telephone,
@@ -83,11 +87,22 @@ class HotelController extends Controller
             'title' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:hotels,email,' . $hotel->id,
             'pseudo' => 'required|string|max:255|unique:hotels,pseudo,' . $hotel->id,
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($request->hasFile('logo')) {
+            // Supprimer l'ancien logo s'il existe
+            if ($hotel->logo) {
+                Storage::delete('public/' . $hotel->logo);
+            }
+            $path = $request->file('logo')->store('logos', 'public');
+        } else {
+            $path = $hotel->logo;
+        }
 
         $hotel->update([
             'title' => $request->title,
-            'logo' => $request->logo,
+            'logo' => $path,
             'address' => $request->address,
             'email' => $request->email,
             'telephone' => $request->telephone,
@@ -107,6 +122,10 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
+        if ($hotel->logo) {
+            Storage::delete('public/' . $hotel->logo);
+        }
+
         $hotel->delete();
         return redirect()->route('hotels.index')->with('success', 'Hotel deleted successfully.');
     }
