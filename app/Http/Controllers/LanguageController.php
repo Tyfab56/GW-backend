@@ -95,14 +95,15 @@ class LanguageController extends Controller
         } else {
             $path = $language->image;
         }
+        $included = (int) $request->included;
 
         $language->update([
             'name' => $request->name,
-            'included' => $request->included,
+            'included' => $included,
             'image' => $path,
         ]);
 
-        Log::info('Store laguage : ', $language);
+        Log::info('Store laguage : ', $language->all());
 
 
         return redirect()->route('languages.index')->with('success', 'Language updated successfully.');
