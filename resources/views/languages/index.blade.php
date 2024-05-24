@@ -17,7 +17,7 @@
             @foreach($languages as $language)
             <tr>
                 <td>{{ $language->name }}</td>
-                <td>{{ $language->default_included ? 'Yes' : 'No' }}</td>
+                <td>{{ $language->included ? 'Yes' : 'No' }}</td>
                 <td>
                     @if($language->image)
                     <img src="{{ asset('storage/' . $language->image) }}" alt="{{ $language->name }}" width="50">
