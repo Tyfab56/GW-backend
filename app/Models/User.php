@@ -22,4 +22,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'admin' => 'boolean',
     ];
+    public function isAdmin()
+    {
+        return $this->admin;
+    }
 }
