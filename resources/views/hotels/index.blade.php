@@ -10,6 +10,8 @@
                 <th>Title</th>
                 <th>Email</th>
                 <th>Pseudo</th>
+                <th>Telephone</th>
+                <th>Website</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,6 +21,8 @@
                 <td>{{ $hotel->title }}</td>
                 <td>{{ $hotel->email }}</td>
                 <td>{{ $hotel->pseudo }}</td>
+                <td>{{ $hotel->telephone }}</td>
+                <td>{{ $hotel->website }}</td>
                 <td>
                     <a href="{{ route('hotels.edit', $hotel) }}" class="btn btn-sm btn-warning">Edit</a>
                     <form action="{{ route('hotels.destroy', $hotel) }}" method="POST" style="display:inline;">
