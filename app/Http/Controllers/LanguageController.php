@@ -79,10 +79,10 @@ class LanguageController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'included' => 'required|boolean',
+            'included' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
+        dd($request);
         if ($request->hasFile('image')) {
             // Supprimer l'ancien image s'il existe
             if ($language->image) {
