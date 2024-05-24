@@ -16,6 +16,7 @@
             <select class="form-control" id="included" name="included" required>
                 <option value="1" {{ $language->included == 1 ? 'selected' : '' }}>Yes</option>
                 <option value="0" {{ $language->included == 0 ? 'selected' : '' }}>No</option>
+
             </select>
         </div>
         <div class="form-group">
