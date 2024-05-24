@@ -22,6 +22,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'admin' => 'boolean',
     ];
+    /**
+     * Determine if the user is an admin.
+     *
+     * @return bool
+     */
     public function isAdmin()
     {
         return $this->admin === 1;
