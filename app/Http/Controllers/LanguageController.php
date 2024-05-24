@@ -47,7 +47,7 @@ class LanguageController extends Controller
 
         $language = new Language([
             'name' => $request->name,
-            'default_included' => $request->default_included,
+            'included' => $request->default_included,
             'image' => $path,
         ]);
 
@@ -94,7 +94,7 @@ class LanguageController extends Controller
 
         $language->update([
             'name' => $request->name,
-            'default_included' => $request->default_included,
+            'included' => $request->default_included,
             'image' => $path,
         ]);
 
