@@ -12,4 +12,9 @@ class Language extends Model
     protected $fillable = [
         'name', 'included', 'image',
     ];
+
+    public function hotels()
+    {
+        return $this->belongsToMany(Hotel::class, 'hotel_language');
+    }
 }

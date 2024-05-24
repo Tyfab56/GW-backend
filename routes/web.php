@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\HotelLanguageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/languages/{language}/edit', [LanguageController::class, 'edit'])->name('languages.edit');
     Route::put('/languages/{language}', [LanguageController::class, 'update'])->name('languages.update');
     Route::delete('/languages/{language}', [LanguageController::class, 'destroy'])->name('languages.destroy');
+});
+
+Route::prefix('hotels')->group(function () {
+    Route::get('{hotel}/languages', [HotelLanguageController::class, 'index'])->name('hotels.languages.index');
+    Route::post('{hotel}/languages', [HotelLanguageController::class, 'store'])->name('hotels.languages.store');
 });

@@ -30,6 +30,7 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this hotel?');">Delete</button>
                     </form>
+                    <a href="{{ route('hotels.languages.index', $hotel) }}" class="btn btn-sm btn-info">Langues</a>
                 </td>
             </tr>
             @endforeach
