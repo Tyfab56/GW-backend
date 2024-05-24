@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+
 
 class LanguageController extends Controller
 {
@@ -82,7 +84,9 @@ class LanguageController extends Controller
             'included' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        dd($request);
+
+        Log::info('Store Request Data: ', $request->all());
+
         if ($request->hasFile('image')) {
             // Supprimer l'ancien image s'il existe
             if ($language->image) {
