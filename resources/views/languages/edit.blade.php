@@ -10,10 +10,7 @@
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $language->name }}" required>
         </div>
-        <div class="form-group">
-            <label for="code">Code</label>
-            <input type="text" class="form-control" id="code" name="code" value="{{ $language->code }}" required>
-        </div>
+
         <div class="form-group">
             <label for="included_in_default_subscription">Included in Default Subscription</label>
             <select class="form-control" id="included_in_default_subscription" name="included_in_default_subscription" required>
