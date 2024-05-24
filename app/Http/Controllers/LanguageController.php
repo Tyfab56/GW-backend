@@ -85,7 +85,6 @@ class LanguageController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Log::info('Store Request Data: ', $request->all());
 
         if ($request->hasFile('image')) {
             // Supprimer l'ancien image s'il existe
@@ -102,6 +101,9 @@ class LanguageController extends Controller
             'included' => $request->included,
             'image' => $path,
         ]);
+
+        Log::info('Store laguage : ', $language);
+
 
         return redirect()->route('languages.index')->with('success', 'Language updated successfully.');
     }
