@@ -76,6 +76,7 @@ class LanguageController extends Controller
      */
     public function update(Request $request, Language $language)
     {
+        dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'default_included' => 'required|boolean',
