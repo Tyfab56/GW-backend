@@ -14,8 +14,9 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-                    <a href="{{ route('hotels.index') }}" class="btn btn-primary">Go to Hotel Backoffice</a>
+
+                    <a href="{{ route('hotels.index') }}" class="btn btn-primary">Hotel Backoffice</a>
+                    <a href="{{ route('languages.index') }}" class="btn btn-primary">Langue Backoffice</a>
                 </div>
             </div>
         </div>
