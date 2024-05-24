@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label for="default_included">Default Included</label>
-            <select class="form-control" id="default_included" name="default_included" required>
+            <select class="form-control" id="included" name="included" required>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>

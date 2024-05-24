@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label for="included_in_default_subscription">Included in Default Subscription</label>
-            <select class="form-control" id="included_in_default_subscription" name="included_in_default_subscription" required>
+            <select class="form-control" id="included" name="included" required>
                 <option value="1" {{ $language->included_in_default_subscription ? 'selected' : '' }}>Yes</option>
                 <option value="0" {{ !$language->included_in_default_subscription ? 'selected' : '' }}>No</option>
             </select>

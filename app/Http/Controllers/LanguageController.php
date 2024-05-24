@@ -39,7 +39,7 @@ class LanguageController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'default_included' => 'required|boolean',
+            'included' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -47,7 +47,7 @@ class LanguageController extends Controller
 
         $language = new Language([
             'name' => $request->name,
-            'included' => $request->default_included,
+            'included' => $request->included,
             'image' => $path,
         ]);
 
@@ -76,10 +76,10 @@ class LanguageController extends Controller
      */
     public function update(Request $request, Language $language)
     {
-        dd($request);
+
         $request->validate([
             'name' => 'required|string|max:255',
-            'default_included' => 'required|boolean',
+            'included' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -95,7 +95,7 @@ class LanguageController extends Controller
 
         $language->update([
             'name' => $request->name,
-            'included' => $request->default_included,
+            'included' => $request->included,
             'image' => $path,
         ]);
 
